@@ -6,6 +6,7 @@
 # It uses the sys module to extract traceback details during exceptions.
 
 import sys  # Imports the sys module to access exception information (like traceback)
+from src.logger import logging
 
 # This function creates a detailed error message including filename, line number, and the actual error
 def error_message_detail(error, error_detail: sys):
