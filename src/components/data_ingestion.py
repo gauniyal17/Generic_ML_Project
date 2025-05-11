@@ -10,6 +10,8 @@ from src.logger import logging                # Logging module to track pipeline
 # ✅ FIX: Should import the DataTransformation class, not just the config
 from src.components.data_transformation import DataTransformation  
 
+from src.components.model_trainer import ModelTrainerConfig,ModelTrainer
+
 # Configuration class using @dataclass for automatic __init__ and cleaner syntax
 @dataclass
 class DataIngestionConfig:
@@ -62,4 +64,7 @@ if __name__ == "__main__":
 
     # Perform data transformation next
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data, test_data)
+    train_arr,test_arr, preprocessor_path=data_transformation.initiate_data_transformation(train_data, test_data)
+
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr,preprocessor_path))
